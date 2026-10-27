@@ -1,0 +1,31 @@
+{
+  "model_name": "DocuGuard_Forensic_CNN",
+  "version": "1.2.0-trained",
+  "status": "READY -- Fully trained on multi-source forensic datasets (IMD2020 + Hugging Face AIForge-Doc-v1)",
+  "input_size": 224,
+  "classes": [
+    "real",
+    "suspicious",
+    "tampered"
+  ],
+  "num_classes": 3,
+  "epochs_trained": 10,
+  "final_train_accuracy": 59.32,
+  "best_val_accuracy": 63.64,
+  "trained_samples": 1912,
+  "val_samples": 462,
+  "dataset_sources": [
+    "IMD2020 Real & Tampered",
+    "Hugging Face Scam-AI/AIForge-Doc-v1"
+  ],
+  "output_heads": [
+    "classification_output",
+    "score_output",
+    "heatmap_output"
+  ],
+  "val_per_class_accuracy": {
+    "Real": 30.33,
+    "Suspicious": 25.0,
+    "Tampered": 81.07
+  }
+}
