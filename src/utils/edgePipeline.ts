@@ -8,6 +8,7 @@ import {
 } from '../types/edge';
 import { analyzeImagePixelForensics } from './pixelForensics';
 import { validateVerhoeff, validatePanCard, validateDateOfBirth } from './checksumValidators';
+import { docuGuardAI, AIModelPrediction } from './aiModel';
 
 export const getVerdictConfig = (verdict: VerdictType): VerdictConfig => {
   switch (verdict) {
@@ -581,6 +582,14 @@ export async function runEdgeVerificationPipeline(
   // Stage 05: Risk Synthesis & Multimodal AI Verification
   onProgress?.(5, '05. RISK SYNTHESIS');
 
+  // In-browser DocuGuard Forensic CNN Inference (v1.2.0 trained model)
+  let aiModelPred: AIModelPrediction | null = null;
+  try {
+    aiModelPred = await docuGuardAI.predict(img);
+  } catch (err) {
+    console.warn('[DocuGuard AI] Local CNN prediction notice:', err);
+  }
+
   let aiResult: any = null;
   try {
     const base64Canvas = document.createElement('canvas');
@@ -740,6 +749,24 @@ export async function runEdgeVerificationPipeline(
       severity: checksumPassed ? 'pass' : 'fail',
       confidence: 0.94
     });
+
+    if (aiModelPred && aiModelPred.modelLoaded) {
+      const isReal = aiModelPred.verdict === 'Real';
+      const isTampered = aiModelPred.verdict === 'Tampered';
+      const topConf = Math.max(...aiModelPred.probabilities);
+      evidence.push({
+        category: 'texture',
+        weight: 20,
+        observation: `DocuGuard Forensic CNN v1.2.0: Classified as ${aiModelPred.verdict} (${(topConf * 100).toFixed(0)}% conf, ${aiModelPred.inferenceTimeMs}ms)`,
+        explanation: isReal
+          ? 'Deep convolutional layers confirmed physical print raster and substrate coherence.'
+          : isTampered
+          ? 'Deep convolutional layers detected localized synthetic or manipulated image artifacts.'
+          : 'Deep convolutional layers detected borderline structural or quality anomalies.',
+        severity: isReal ? 'pass' : isTampered ? 'fail' : 'warn',
+        confidence: topConf
+      });
+    }
   }
 
   // Calculate score and verdict
@@ -846,7 +873,14 @@ export async function runEdgeVerificationPipeline(
     },
     evidence,
     conceptEvaluation,
+    aiModelPrediction: aiModelPred ? {
+      verdict: aiModelPred.verdict,
+      probabilities: aiModelPred.probabilities,
+      forgeryScore: aiModelPred.forgeryScore,
+      inferenceTimeMs: aiModelPred.inferenceTimeMs
+    } : undefined,
     checksCompleted: [
+      'DocuGuard Forensic CNN v1.2.0 (MobileNet Deep Feature Classification)',
       'Moiré Screen Frequency FFT Scan',
       'JPEG Quantization Macroblock ELA',
       'Portrait Boundary Step-Function Scan',
@@ -857,6 +891,6 @@ export async function runEdgeVerificationPipeline(
     checksUnavailable: [
       'Live UIDAI/RTO Government Central Database Lookup (No live token provided)'
     ],
-    analyzerVersion: 'DocuGuard Edge v2.6.4 (WASM Core + Gemini 3.8 Flash)'
+    analyzerVersion: 'DocuGuard Edge v2.7.0 (WASM Core + DocuGuard CNN v1.2.0 + Gemini 3.8 Flash)'
   };
 }

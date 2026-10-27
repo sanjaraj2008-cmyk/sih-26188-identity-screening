@@ -217,6 +217,36 @@ assert(mockDossierData.ocr.fields.fullName === 'Vikramaditya Sharma', 'OCR ident
 const verdictConf = getVerdictConfig(mockDossierData.verdict);
 assert(verdictConf.badge === 'AUTHENTIC' || verdictConf.badge === 'AUTHENTIC VERIFIED', 'Verdict mapping formats authentic badge correctly');
 
+// -------------------------------------------------------------
+// SUITE 7: DocuGuard Forensic CNN Model & Artifact Integrity
+// -------------------------------------------------------------
+console.log('\x1b[36m[SUITE 7] DocuGuard Forensic CNN Model & Artifact Integrity\x1b[0m');
+
+import * as fs from 'fs';
+import * as path from 'path';
+import { CLASS_LABELS } from '../src/utils/aiModel';
+
+const modelJsonPath = path.resolve(process.cwd(), 'public/ai-model/model.json');
+const metaJsonPath = path.resolve(process.cwd(), 'public/ai-model/model_metadata.json');
+const shardBinPath = path.resolve(process.cwd(), 'public/ai-model/group1-shard1of1.bin');
+
+assert(fs.existsSync(modelJsonPath), 'TensorFlow.js model.json architecture exists');
+const modelJson = JSON.parse(fs.readFileSync(modelJsonPath, 'utf8'));
+assert(modelJson.format === 'layers-model' || !!modelJson.modelTopology, 'model.json conforms to TensorFlow.js LayersModel specification');
+
+assert(fs.existsSync(metaJsonPath), 'model_metadata.json exists');
+const metaJson = JSON.parse(fs.readFileSync(metaJsonPath, 'utf8'));
+assert(metaJson.model_name === 'DocuGuard_Forensic_CNN', 'Metadata identifies DocuGuard_Forensic_CNN architecture');
+assert(metaJson.num_classes === 3, 'Metadata specifies 3-class classification head');
+assert(metaJson.classes.includes('real') && metaJson.classes.includes('tampered'), 'Metadata classes contain real and tampered');
+
+assert(fs.existsSync(shardBinPath), 'Model weight binary shard (group1-shard1of1.bin) exists');
+const binStat = fs.statSync(shardBinPath);
+assert(binStat.size > 1000000, `Model weight shard is populated (${(binStat.size / 1024 / 1024).toFixed(2)} MB)`);
+
+assert(CLASS_LABELS.length === 3, 'aiModel exports 3 class labels');
+assert(CLASS_LABELS[0] === 'Real' && CLASS_LABELS[2] === 'Tampered', 'aiModel maps Real, Suspicious, Tampered');
+
 console.log('\n======================================================');
 console.log(`TEST SUMMARY: ${passedTests}/${totalTests} PASSED (${failedTests} FAILED)`);
 console.log('======================================================\n');

@@ -104,6 +104,12 @@ export interface DocumentVerificationData {
   };
   evidence: ForensicEvidenceItem[];
   conceptEvaluation?: ConceptEvaluation;
+  aiModelPrediction?: {
+    verdict: string;
+    probabilities: [number, number, number];
+    forgeryScore: number;
+    inferenceTimeMs: number;
+  };
   checksCompleted: string[];
   checksUnavailable: string[];
   analyzerVersion: string;

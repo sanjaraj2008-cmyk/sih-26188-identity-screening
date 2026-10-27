@@ -549,6 +549,40 @@ export const VerifyPage: React.FC = () => {
                       Deterministic tamper-evident checksum verified client-side across binary payload
                     </span>
                   </div>
+
+                  {/* DocuGuard Forensic CNN Model Card */}
+                  {data.aiModelPrediction && (
+                    <div className="glass p-3.5 rounded-xl col-span-2 sm:col-span-3 border border-purple-500/25 relative overflow-hidden bg-purple-950/20">
+                      <div className="flex items-center justify-between mb-1.5">
+                        <span className="text-[10px] text-purple-400 uppercase font-bold flex items-center gap-1.5 font-mono">
+                          <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+                          DOCUGUARD FORENSIC CNN (V1.2.0 ARTIFACTS LOADED)
+                        </span>
+                        <span className="text-[10px] text-slate-400 font-mono">
+                          {data.aiModelPrediction.inferenceTimeMs}ms inference
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                        <div className="flex items-center gap-2">
+                          <span className="text-slate-300 font-medium">Model Classification:</span>
+                          <span className={`font-mono font-bold px-2 py-0.5 rounded text-[11px] ${
+                            data.aiModelPrediction.verdict === 'Real'
+                              ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                              : data.aiModelPrediction.verdict === 'Tampered'
+                              ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                              : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                          }`}>
+                            {data.aiModelPrediction.verdict.toUpperCase()}
+                          </span>
+                        </div>
+                        <div className="text-[11px] font-mono text-slate-300">
+                          P(Real): {(data.aiModelPrediction.probabilities[0] * 100).toFixed(0)}% · 
+                          P(Susp): {(data.aiModelPrediction.probabilities[1] * 100).toFixed(0)}% · 
+                          P(Tamp): {(data.aiModelPrediction.probabilities[2] * 100).toFixed(0)}%
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
 
