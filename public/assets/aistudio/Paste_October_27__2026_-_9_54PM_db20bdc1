@@ -1,0 +1,745 @@
+# DOCUMENT EDGE — COMPLETE WEBSITE CLONING, AI MODEL IMPLEMENTATION, FULL-STACK DEVELOPMENT, TESTING, AND DEPLOYMENT
+
+## YOUR ROLE
+
+Act as a senior full-stack software engineer, AI/ML engineer, digital forensics specialist, cybersecurity engineer, UI/UX engineer, QA automation engineer, and DevOps engineer.
+
+Your task is to inspect, repair, complete, test, and prepare my existing project, **Document Edge**, for deployment in a new GitHub repository and an independent hosting environment.
+
+This is an execution task. Do not merely explain what needs to be done, generate a plan, or produce sample code. Inspect the available source code, implement the required changes, run the application, execute tests, fix discovered issues, and verify the final result.
+
+Do not claim that any task is complete unless you have actually performed and verified it.
+
+---
+
+# PROJECT DETAILS
+
+Original live website: [INSERT ORIGINAL WEBSITE URL]
+
+Existing GitHub repository: [INSERT EXISTING GITHUB REPOSITORY URL]
+
+New GitHub repository: To be created after verification.
+
+New hosting provider: To be selected after examining the application's technical requirements.
+
+Project name: Document Edge.
+
+Core purpose: A document-verification platform that analyzes uploaded documents to identify suspicious alterations, image manipulation, inconsistencies, metadata anomalies, digital-signature problems, and other indicators relevant to document authenticity.
+
+The website should help users understand whether a document appears consistent with the available evidence, whether potential manipulation is detected, and whether authenticity can actually be verified.
+
+The original website's design, branding, layout, and user experience must be preserved.
+
+## GLOBAL EXECUTION RULES
+
+1. Work directly on the available project files whenever the environment supports code editing.
+2. Inspect the actual implementation before deciding what to change.
+3. Preserve the existing technology stack and working functionality unless there is a clear technical reason to change them.
+4. Never assume that a successful Git clone means every required model, asset, dependency, or configuration file is present.
+5. Never replace a genuine implementation with mock data, hardcoded responses, simulated model outputs, or fake success messages.
+6. Never fabricate model accuracy, document authenticity, test results, or deployment status.
+7. Do not expose secrets or upload private documents to external services without explicit authorization.
+8. Do not delete files, overwrite unrelated work, rewrite Git history, or change repository remotes destructively without approval.
+9. If access to a URL, repository, terminal, browser, model, or hosting account is unavailable, explain the limitation accurately and complete all other feasible work.
+10. Maintain a checklist of completed, failed, and blocked tasks.
+11. Work sequentially through the phases below.
+12. The final application must be a functional document-analysis product, not just a visually convincing frontend.
+
+# PHASE 1 — AUDIT AND VERIFY THE CLONED REPOSITORY
+
+This is the first task. Do not modify application code until the baseline audit is complete.
+
+## 1.1 Verify Git integrity
+
+Inspect the repository and establish:
+
+- The actual project root.
+- The current branch.
+- The latest commit hash.
+- The configured remote repositories.
+- The commit history.
+- The current working-tree status.
+- Whether local modifications already exist.
+- Whether the local HEAD matches the expected remote commit.
+- Whether all required tracked files are present.
+- Whether Git submodules are initialized correctly.
+- Whether Git LFS is used and required objects have been downloaded.
+- Whether model weights, assets, fonts, configuration files, migrations, and other required resources are present.
+- Whether dependencies and lockfiles are included.
+- Whether `.gitignore` excludes necessary source files accidentally.
+- Whether required environment variables or configuration files are missing.
+
+Use appropriate commands for the actual stack, including Git status, log, remote, HEAD, tracked-file, submodule, and LFS checks where applicable.
+
+Never print actual API keys, passwords, access tokens, or sensitive environment values.
+
+Create a repository-integrity report with PASS, FAIL, or BLOCKED for each check.
+
+## 1.2 Verify the original website and cloned UI
+
+Open the original website and inspect every accessible route and major interaction.
+
+Run the cloned application locally if the environment permits.
+
+Compare the original website and the clone in terms of:
+
+- Overall layout and page structure.
+- Header, navigation, sidebar, and footer.
+- Typography, font weights, colors, spacing, and dimensions.
+- Buttons, icons, illustrations, images, and other assets.
+- Animations and transitions.
+- Upload interface and document preview.
+- Verification results and evidence panels.
+- Loading, empty, success, and error states.
+- Modals, menus, and navigation links.
+- Existing login, history, settings, or account features.
+- Mobile, tablet, and desktop responsiveness.
+- Keyboard navigation and accessibility.
+
+Use screenshots at comparable viewport sizes when browser capabilities are available.
+
+Create a UI-parity checklist that identifies each mismatch and the required correction.
+
+**Preserve the original UI exactly wherever practical.** Do not redesign the website, replace it with a generic template, change the brand identity, or remove existing features merely to simplify development.
+
+If the original website is inaccessible, record that limitation and inspect the available source code and assets instead. Never claim to have compared screens you could not access.
+
+## 1.3 Audit the existing application
+
+Identify:
+
+- Frontend framework and entry points.
+- Backend framework and entry points.
+- Routing architecture.
+- Existing API endpoints.
+- Existing database and storage systems.
+- Existing authentication, if any.
+- Existing AI/ML implementation.
+- Existing model files and inference functions.
+- Existing OCR and document-parsing libraries.
+- External APIs and services.
+- Environment variables.
+- Build and deployment configuration.
+- Current test coverage.
+- Known errors, incomplete functionality, and security weaknesses.
+
+Trace the entire application from user interaction to backend processing and final result display.
+
+## 1.4 Establish the baseline
+
+Before modifying the project, produce a concise report showing:
+
+1. Repository integrity.
+2. Original website and UI-parity findings.
+3. Existing architecture.
+4. Current AI model implementation status.
+5. Broken and incomplete features.
+6. Build and dependency status.
+7. Existing security risks.
+8. A prioritized implementation checklist.
+
+After documenting the baseline, proceed to the implementation phases without waiting for additional approval unless an action would be destructive, require unavailable access, or incur costs.
+
+# PHASE 2 — VERIFY THE EXISTING AI MODEL
+
+Determine whether the AI/ML functionality is fully implemented, partially implemented, or missing.
+
+Search the complete codebase for:
+
+- Model definitions and checkpoints.
+- Model weights and configuration files.
+- Inference functions.
+- Preprocessing and postprocessing functions.
+- Model-loading code.
+- OCR implementations.
+- Image-forensics implementations.
+- API routes invoking models.
+- Placeholder functions and mock responses.
+- Hardcoded confidence scores.
+- TODOs and unimplemented functions.
+- Exception handlers that silently hide failures.
+- Missing dependencies and external services.
+- Model download scripts and licensing requirements.
+
+Trace the real inference path:
+
+Uploaded document → Validation → Preprocessing → Model inference → Forensic checks → Evidence aggregation → Result generation → Frontend display.
+
+Verify that the uploaded file actually reaches the intended model and that its real output influences the displayed result.
+
+For each existing model, document:
+
+- Name and purpose.
+- Source and license.
+- Input format and preprocessing.
+- Expected output.
+- Model weight availability.
+- Runtime requirements.
+- CPU/GPU compatibility.
+- Inference latency where measurable.
+- Known limitations.
+
+If the existing model is incomplete, repair it where possible.
+
+If model weights are missing, determine whether they can be obtained legally and reliably. Do not invent weights or claim a model works simply because its library is installed.
+
+If a suitable trained model is unavailable, implement an honest forensic-analysis pipeline using available methods and clearly identify the capabilities that still require a trained model.
+
+# PHASE 3 — IMPLEMENT THE COMPLETE DOCUMENT-VERIFICATION PIPELINE
+
+Build a modular pipeline using the existing technology stack wherever possible.
+
+## 3.1 File upload and validation
+
+Initially support:
+
+- PDF.
+- JPG and JPEG.
+- PNG.
+
+Add additional formats only when meaningful analysis is supported.
+
+Implement:
+
+- Drag-and-drop upload.
+- File selection.
+- Appropriate file-size limits.
+- MIME type and file-signature checks.
+- Corrupt-file detection.
+- Empty-file handling.
+- Unsupported-format handling.
+- Encrypted PDF handling.
+- Page-count limits.
+- Safe PDF parsing and image decoding.
+- Progress feedback.
+- Clear errors and retry behavior.
+- Temporary-file cleanup.
+
+Validate files on the server, not only in the frontend.
+
+Prevent path traversal, malicious file parsing, resource exhaustion, and unsafe execution of uploaded content.
+
+## 3.2 PDF and document metadata analysis
+
+Extract available information such as:
+
+- PDF creator and producer.
+- Creation and modification timestamps.
+- Page count and dimensions.
+- Embedded fonts.
+- Embedded images.
+- Digital-signature fields.
+- Available document revisions.
+- Incremental PDF updates.
+- Object-level structural anomalies.
+- Text and image placement information.
+
+For image files, inspect EXIF metadata and other available properties.
+
+Report metadata inconsistencies with evidence.
+
+Missing or unusual metadata must not automatically be interpreted as proof of forgery. Metadata can be removed or altered.
+
+## 3.3 Image-manipulation detection
+
+Implement suitable forensic checks, where technically applicable:
+
+- Error Level Analysis (ELA).
+- JPEG compression inconsistencies.
+- Local noise inconsistencies.
+- Resampling artifacts.
+- Suspicious overlays and image-region boundaries.
+- Copy-move duplication detection where feasible.
+- Inconsistent text baselines, fonts, and spacing.
+- OCR and visual-region discrepancies.
+- Suspicious image edits or compositing artifacts.
+
+Select methods appropriate to the uploaded file and its processing history.
+
+Do not treat ELA or any single visual heuristic as definitive evidence of manipulation.
+
+If an existing trained manipulation-detection model is available, integrate its real inference process and verify that preprocessing, model loading, and output interpretation are correct.
+
+If no suitable trained model is available, implement the supported forensic checks and explicitly report that learned manipulation detection is unavailable.
+
+## 3.4 OCR and document-text analysis
+
+For digital PDFs, extract text using appropriate PDF parsers.
+
+For scanned PDFs and images, implement OCR using a suitable engine compatible with the project's stack.
+
+Analyze:
+
+- Text blocks and reading order.
+- Page-specific content.
+- Font and formatting differences where detectable.
+- Misaligned text.
+- Duplicated content.
+- Suspicious text overlays.
+- Visible text that conflicts with extracted text.
+- Inconsistencies between repeated fields.
+- Missing required fields for supported document types.
+
+Where useful, identify the affected page and approximate region.
+
+Do not classify a document as fraudulent solely because OCR is imperfect or fields do not match.
+
+## 3.5 Digital-signature verification
+
+When a document contains a digital signature:
+
+- Determine whether the signature is present.
+- Verify cryptographic integrity using appropriate established libraries.
+- Detect whether signed content was changed after signing, where supported.
+- Inspect certificate information.
+- Validate certificate chains when trust roots are available.
+- Report unavailable revocation checks or trust information.
+- Distinguish signature integrity from the signer's real-world identity.
+
+A valid digital signature does not prove that every claim inside the document is true.
+
+Do not confuse a scanned picture of a signature with a cryptographically verifiable digital signature.
+
+## 3.6 Trusted-source verification
+
+If the application has a real issuer-verification API, trusted registry, reference database, or original-document comparison feature, inspect and integrate it appropriately.
+
+Where supported:
+
+- Compare against trusted reference records.
+- Compare file hashes against known originals.
+- Validate issuer-provided document identifiers.
+- Report the exact source used for verification.
+- Record whether the source actually confirmed the document.
+
+Do not invent official databases or simulate an external verification response.
+
+If no trusted source is integrated, clearly state that issuer-level verification has not been performed.
+
+## 3.7 Document-type-specific analysis
+
+Identify supported document categories only when sufficient evidence exists.
+
+Examples include:
+
+- Academic certificates.
+- Invoices and receipts.
+- Contracts.
+- General PDF documents.
+- Other document types already supported by the original application.
+
+Implement configurable rules for supported categories. Avoid hardcoded claims about official institutions or issuers without a real verification source.
+
+# PHASE 4 — CREATE AN EVIDENCE-BASED RESULT ENGINE
+
+The application must not blindly force every document into a true-or-false classification.
+
+Use the following result categories:
+
+1. **No significant manipulation detected:** The implemented checks found no significant indicators, but authenticity is not guaranteed.
+2. **Possible manipulation detected:** Specific checks identified suspicious evidence that requires further review.
+3. **Inconclusive:** Available evidence is insufficient, conflicting, or incomplete.
+4. **Integrity verification failed:** A specific cryptographic or document-integrity check failed.
+5. **Authenticity verified against a trusted source:** Use only when a real, authorized verification source successfully confirms the document.
+
+Use the appropriate category based on the evidence actually available.
+
+For every analysis, produce a structured result containing:
+
+- Analysis identifier.
+- Document type, when identifiable.
+- Analysis timestamp.
+- Overall outcome.
+- Checks performed.
+- Findings and severity.
+- Evidence supporting each finding.
+- Affected page or region where available.
+- Explanation of each finding.
+- Checks that could not be completed.
+- Analyzer or model version.
+- Relevant limitations.
+- Recommended next steps.
+
+Keep separate concepts separate:
+
+- Manipulation detection.
+- Cryptographic integrity.
+- Issuer verification.
+- Content consistency.
+- Overall authenticity.
+
+Do not use one arbitrary score to represent all five.
+
+If confidence values are displayed, explain their meaning and validate their calibration. Do not present heuristic scores as statistically meaningful probabilities.
+
+The application must be able to return an inconclusive result instead of manufacturing certainty.
+
+# PHASE 5 — CONNECT EVERY FRONTEND FEATURE
+
+Preserve the existing framework, layout, visual design, brand identity, colors, typography, and animations.
+
+Connect every relevant existing interface element to real functionality.
+
+Implement or repair:
+
+- Document upload.
+- File preview.
+- Upload validation.
+- Analysis progress.
+- Results display.
+- Evidence and findings display.
+- Page-specific issue indicators where supported.
+- Downloadable analysis reports where appropriate.
+- Retry behavior.
+- Error states.
+- Analysis history, if already part of the application.
+- Deletion controls for persisted documents, if applicable.
+- Responsive mobile and desktop behavior.
+- Accessibility and keyboard interaction.
+
+Remove mock responses, dead buttons, placeholder endpoints, fabricated scores, and sample data presented as genuine results.
+
+Every visible control must either work or be clearly disabled with an explanation.
+
+Do not rewrite the entire frontend unless necessary. Make targeted changes to preserve the original design.
+
+# PHASE 6 — IMPLEMENT AND CONNECT THE BACKEND
+
+Inspect the current architecture before selecting or replacing backend technologies.
+
+Implement all required backend functionality in the existing stack wherever practical.
+
+Requirements:
+
+- Real upload and analysis endpoints.
+- Request and response validation.
+- Correct processing of uploaded files.
+- Model-loading and inference integration.
+- Integration of metadata, OCR, and forensic analyzers.
+- Structured evidence aggregation.
+- Appropriate asynchronous processing for expensive analyses.
+- Correct progress and error handling.
+- Timeouts and bounded concurrency.
+- Configurable file-size and processing limits.
+- Safe report generation.
+- Appropriate storage and retention behavior.
+- Health and readiness endpoints.
+- Environment-based configuration.
+- Clear API error responses.
+- No secrets embedded in public frontend code.
+
+Use FastAPI or an appropriate existing Python framework if the backend is Python-based. For JavaScript or TypeScript, preserve the existing backend framework where viable.
+
+Do not introduce unnecessary infrastructure or paid dependencies.
+
+Ensure that frontend API requests point to the correct configurable backend URL.
+
+If the application needs a separate frontend and backend deployment, configure both and document their relationship.
+
+# PHASE 7 — SECURITY AND PRIVACY
+
+Perform a security review of the complete application.
+
+Check for:
+
+- Unsafe file handling.
+- Path traversal.
+- Malicious PDF and image parsing.
+- Resource-exhaustion attacks.
+- Injection vulnerabilities.
+- Cross-site scripting.
+- Authentication and authorization issues, if applicable.
+- CORS and CSRF configuration.
+- Rate limiting and abuse prevention.
+- Unsafe report downloads.
+- Sensitive data in logs.
+- Hardcoded credentials.
+- Dependency vulnerabilities.
+- Insecure temporary files.
+- Unauthorized access to stored documents.
+- Accidental external transmission of uploaded documents.
+
+Treat all uploaded files and extracted document text as untrusted input.
+
+Never execute uploaded content or render extracted text as trusted HTML.
+
+Do not send document content to external AI providers without explicit authorization and appropriate disclosure.
+
+Implement clear retention and deletion behavior. Delete temporary files when processing is finished and ensure errors do not leave sensitive documents behind unnecessarily.
+
+Document the privacy implications of any persistent storage.
+
+Do not claim the application is completely secure merely because automated checks pass.
+
+# PHASE 8 — BUILD A REAL TEST SUITE
+
+Write and run tests against the actual implementation.
+
+## 8.1 Unit tests
+
+Test:
+
+- File validation.
+- PDF parsing.
+- Image decoding.
+- OCR extraction.
+- Metadata extraction.
+- Signature verification.
+- Forensic-analysis functions.
+- Model loading and inference.
+- Evidence aggregation.
+- Result classification.
+- API validation.
+- Error handling.
+- Report generation.
+
+## 8.2 Integration tests
+
+Verify the complete sequence:
+
+Upload → Validate → Extract → Analyze → Aggregate evidence → Generate result → Return API response → Display result in the frontend.
+
+Confirm that real analysis functions execute and their actual outputs influence the result.
+
+## 8.3 End-to-end tests
+
+Test at least:
+
+1. A clean, digitally generated PDF.
+2. A scanned PDF.
+3. A valid image-based document.
+4. A known altered document.
+5. A document with suspicious image modifications.
+6. A corrupt document.
+7. An empty file.
+8. An unsupported file type.
+9. An oversized document.
+10. An encrypted PDF.
+11. A document with missing metadata.
+12. A document with a valid digital signature, when available.
+13. A document with an invalid signature, when available.
+14. A document whose authenticity cannot be established.
+15. A backend or model-loading failure.
+16. Retry after a failed analysis.
+17. Mobile and desktop interface behavior.
+
+Use synthetic or legally usable samples with documented ground truth. Do not assume that a sample is forged merely because it looks suspicious.
+
+## 8.4 Regression testing
+
+Verify that existing routes, original styling, responsive behavior, navigation, and previous functionality still work.
+
+Run the available build, lint, type-check, and test commands.
+
+Fix failures caused by the implementation and rerun the affected tests.
+
+Report passed, failed, skipped, and blocked tests separately.
+
+If browser automation, test documents, credentials, or infrastructure are unavailable, state precisely which tests could not be performed.
+
+# PHASE 9 — MODEL PERFORMANCE AND RESOURCE MANAGEMENT
+
+Inspect the model's hardware and software requirements.
+
+Verify:
+
+- Model weights are available.
+- Model loading succeeds.
+- Inference runs on real input.
+- CPU-only execution works when supported.
+- GPU acceleration is optional unless explicitly required.
+- Startup time and inference latency are measured where possible.
+- Memory consumption is acceptable for the target environment.
+- Processing does not block the server indefinitely.
+- Large files and excessive page counts are bounded.
+- Missing model assets produce clear errors.
+- Failed downloads can be retried safely.
+- Model licensing and distribution restrictions are documented.
+
+Do not commit large model files to Git unnecessarily. Use an appropriate model-download strategy or Git LFS when justified.
+
+If the target host cannot run the model within its resource limits, identify the actual constraint and recommend a feasible deployment architecture.
+
+Do not silently downgrade the analysis while continuing to claim that the full AI model is running.
+
+# PHASE 10 — PREPARE THE PROJECT FOR A NEW GITHUB REPOSITORY
+
+Only after the implementation and validation phases, prepare the project for migration.
+
+Verify that the project includes:
+
+- Complete application source.
+- Correct dependency manifests and lockfiles.
+- Updated `.gitignore`.
+- A comprehensive `README.md`.
+- A safe `.env.example`.
+- Model installation or download instructions.
+- Database migration instructions, if applicable.
+- Local setup instructions.
+- Test commands.
+- Build and start commands.
+- API documentation.
+- Deployment instructions.
+- Third-party attribution and licensing information where required.
+
+Ensure that real secrets, private documents, local credentials, unnecessary generated files, and sensitive logs are not included.
+
+Identify large model files and other resources that require separate handling.
+
+Prepare the exact Git commands needed to initialize or migrate the project into a new repository.
+
+Before pushing:
+
+- Verify the intended project directory.
+- Check the Git status.
+- Review staged files.
+- Confirm no secrets are staged.
+- Confirm the intended remote URL.
+- Preserve existing history unless a fresh history is explicitly required and authorized.
+
+Do not create the new repository, publish code, overwrite an existing remote, or rewrite Git history without the required access and authorization.
+
+After the new repository is created and authorized, verify that the push succeeds and that the remote contains the intended commit and required source files.
+
+# PHASE 11 — PREPARE FOR INDEPENDENT HOSTING
+
+Select a suitable hosting architecture based on the actual technology stack and model requirements.
+
+Do not assume a static frontend host can execute a heavy AI model or persistent Python backend.
+
+Provide:
+
+- Runtime and version requirements.
+- Build command.
+- Start command.
+- Required environment variables.
+- Model asset installation procedure.
+- Database and storage requirements.
+- CPU, memory, and disk requirements.
+- Background-worker requirements, if necessary.
+- Health-check endpoint.
+- Production configuration.
+- CORS and HTTPS configuration.
+- Upload-size limits.
+- File-retention behavior.
+- Cold-start and inference considerations.
+- Deployment and troubleshooting instructions.
+
+Make the frontend backend URL configurable.
+
+Keep all private API keys on the server side. Never expose backend credentials in frontend bundles.
+
+Support the intended deployment environment without breaking local development.
+
+Do not deploy publicly, expose sensitive information, or incur paid hosting or API charges without authorization.
+
+Once the host and credentials are available, deploy only with the necessary permission. Then verify the actual deployed website, backend health, model availability, upload flow, and analysis results.
+
+# PHASE 12 — FINAL ACCEPTANCE TEST
+
+Before declaring completion, evaluate every applicable criterion:
+
+- [ ] Repository and Git state verified.
+- [ ] Required files and dependencies verified.
+- [ ] Model assets and configuration verified.
+- [ ] Original website inspected.
+- [ ] UI parity checked against the clone.
+- [ ] Original UI preserved.
+- [ ] Upload and server-side validation work.
+- [ ] Real document analysis executes.
+- [ ] AI model integration is verified, or missing model capability is explicitly documented.
+- [ ] Metadata and structural checks work.
+- [ ] OCR works for supported inputs.
+- [ ] Image-forensics checks work where applicable.
+- [ ] Digital signatures are handled correctly where supported.
+- [ ] Trusted-source verification is not fabricated.
+- [ ] Results are based on actual evidence.
+- [ ] Inconclusive outcomes are supported.
+- [ ] Frontend and backend are correctly connected.
+- [ ] Errors and failures are handled correctly.
+- [ ] Security and privacy checks are performed.
+- [ ] Unit tests are executed.
+- [ ] Integration tests are executed.
+- [ ] End-to-end tests are executed where infrastructure permits.
+- [ ] Regression tests are executed.
+- [ ] Build and production configuration are checked.
+- [ ] Documentation is complete.
+- [ ] New-repository migration instructions are ready.
+- [ ] Hosting instructions are ready.
+- [ ] Remaining limitations are documented.
+
+# REQUIRED FINAL REPORT
+
+At the end of the work, provide the following sections.
+
+## A. Repository audit
+- Repository and commit verification.
+- Missing files and dependencies.
+- Existing architecture.
+- Original UI comparison.
+
+## B. Implementation summary
+- Features completed.
+- AI/ML components reused, repaired, or added.
+- Files created, modified, or removed.
+- API and backend changes.
+- UI changes.
+
+## C. AI verification details
+- Actual model name and version.
+- Model-loading and inference status.
+- Forensic methods implemented.
+- OCR and signature-verification status.
+- Trusted-source integration status.
+- Limitations and unsupported cases.
+
+## D. Testing report
+- Build status.
+- Unit-test results.
+- Integration-test results.
+- End-to-end-test results.
+- Regression-test results.
+- Failed, skipped, and blocked tests.
+
+## E. Security and privacy
+- Vulnerabilities found.
+- Fixes implemented.
+- Remaining risks.
+- Document storage and deletion behavior.
+
+## F. Local execution
+- Exact installation commands.
+- Environment setup.
+- Model installation.
+- Startup commands.
+- Test commands.
+
+## G. New repository migration
+- Required Git commands.
+- Repository setup instructions.
+- Secret checks.
+- Push and verification steps.
+
+## H. Hosting and deployment
+- Recommended hosting architecture.
+- Build and start commands.
+- Environment variables.
+- Model and storage requirements.
+- Deployment verification checklist.
+
+## I. Final status
+Classify the project honestly as one of the following:
+
+- **READY:** Required implementation and applicable tests have passed.
+- **PARTIALLY READY:** Core functionality works, but specified requirements remain incomplete.
+- **BLOCKED:** A critical dependency, access limitation, or implementation failure prevents the required functionality.
+
+List every outstanding issue and the exact action needed to resolve it.
+
+## START EXECUTION NOW
+
+Begin with Phase 1. Verify the actual cloned repository and compare it with the original website before modifying any application code.
+
+Continue through every phase, completing all feasible independent tasks. Do not stop after the audit or plan. Do not claim completion without evidence.
+
+The final deliverable must be a functional, testable, secure, maintainable Document Edge application that preserves the original UI, implements genuine document-analysis functionality, and is prepared for migration and independent deployment.

@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #020412;
+    color: #f8fafc;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+  }
+  
+  code, pre, .font-mono {
+    font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  background: rgba(9, 11, 40, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-bright {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: rgba(12, 15, 50, 0.6);
+  border: 1px solid rgba(139, 92, 246, 0.18);
+}
+
+.glass-inset {
+  background: rgba(2, 4, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Cyber Panels */
+.panel-cyber { border-color: rgba(34, 211, 238, 0.2); }
+.panel-violet { border-color: rgba(139, 92, 246, 0.2); }
+.panel-emerald { border-color: rgba(16, 185, 129, 0.2); }
+.panel-amber { border-color: rgba(245, 158, 11, 0.2); }
+.panel-rose { border-color: rgba(225, 29, 72, 0.2); }
+
+/* Buttons matching sih-26188 exactly */
+.btn-primary {
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, #8b5cf6, #6366f1);
+  border: none;
+  border-radius: 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.25s;
+  display: inline-flex;
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.35);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 50px rgba(139, 92, 246, 0.55);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  color: #e2e8f0;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.25s;
+  display: inline-flex;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-cyber {
+  color: #22d3ee;
+  cursor: pointer;
+  background: rgba(34, 211, 238, 0.07);
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  border-radius: 0.625rem;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: all 0.25s;
+  display: inline-flex;
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+}
+
+.btn-cyber:hover:not(:disabled) {
+  background: rgba(34, 211, 238, 0.12);
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.25);
+}
+
+.btn-cyber:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Cyber Scanning Corners */
+.scan-corner {
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+}
+
+.scan-corner-tl {
+  border-top: 2px solid rgba(34, 211, 238, 0.7);
+  border-left: 2px solid rgba(34, 211, 238, 0.7);
+  top: 8px;
+  left: 8px;
+}
+
+.scan-corner-tr {
+  border-top: 2px solid rgba(34, 211, 238, 0.7);
+  border-right: 2px solid rgba(34, 211, 238, 0.7);
+  top: 8px;
+  right: 8px;
+}
+
+.scan-corner-bl {
+  border-bottom: 2px solid rgba(34, 211, 238, 0.7);
+  border-left: 2px solid rgba(34, 211, 238, 0.7);
+  bottom: 8px;
+  left: 8px;
+}
+
+.scan-corner-br {
+  border-bottom: 2px solid rgba(34, 211, 238, 0.7);
+  border-right: 2px solid rgba(34, 211, 238, 0.7);
+  bottom: 8px;
+  right: 8px;
+}
+
+/* Custom cyber scrollbar */
+.intel-scroll::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.intel-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+}
+.intel-scroll::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 8px;
+}
+.intel-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.6);
+}
+
+/* Cyber Grid background helper */
+.bg-cyber-grid {
+  background-image: linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}

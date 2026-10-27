@@ -1,0 +1,6 @@
+{
+  "name": "DocuGuard - Document Security & Tamper Detection Suite",
+  "description": "Enterprise-grade document security platform featuring forensic tamper detection, automated PII redaction, cryptographic integrity hashing, dynamic watermarking, and secure PDF export.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
